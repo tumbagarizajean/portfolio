@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Case-Resolution SOP Redesign — Riza Jean Tumbaga</title>
+<style>
+:root{--ink:#142433;--steel:#3E5C76;--amber:#E8A33D;--paper:#F5F6F4;--dim:#E8EBE8;--line:#D7DBD6;--text:#243138;--soft:#5B6B76;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--paper);color:var(--text);font-family:Georgia,serif;line-height:1.65;}
+.wrap{max-width:720px;margin:0 auto;padding:50px 24px 80px;}
+a.back{color:var(--steel);text-decoration:none;font-family:system-ui,sans-serif;font-size:0.92rem;}
+h1{margin:22px 0 6px;font-size:2rem;}
+.meta{color:var(--soft);font-family:system-ui,sans-serif;font-size:0.92rem;margin-bottom:30px;}
+h2{margin:34px 0 10px;font-size:1.3rem;color:var(--steel);}
+p{margin-bottom:14px;}
+.note{background:var(--dim);border-left:3px solid var(--amber);padding:14px 18px;font-family:system-ui,sans-serif;font-size:0.9rem;color:var(--soft);margin-bottom:24px;}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:0.95rem;}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;}
+th{background:var(--dim);}
+ol,ul{margin:0 0 14px 22px;}
+li{margin-bottom:8px;}
+</style></head><body><div class="wrap">
+<a class="back" href="index.html">← Back to portfolio</a>
+<h1>Improving AI-Generated Case Resolution Accuracy Through SOP Redesign</h1>
+<p class="meta">Role: Subject Matter Expert, AI Enablement · Tools: internal generative AI + Salesforce Case Management · Result: 44% → 55% resolution accuracy, 30% → 34% overall AI impact, in under two months</p>
+<div class="note">Describes the method and results as reported by internal performance review, without reproducing SOP content, the AI tool's internal name, or any customer/company data.</div>
+
+<h2>The problem</h2>
+<p>A generative AI tool was drafting resolution recommendations and reply templates for customer service cases, driven by a set of SOP-based rules. The SOP was written for a human agent to interpret, not for a rules-driven system to branch on — that gap showed up as recommendations that missed the customer's actual intent or landed on the wrong resolution template. Baseline resolution-quality was around 44%.</p>
+
+<h2>What I did</h2>
+<ol>
+<li><strong>Investigated with the people closest to the work.</strong> I coordinated directly with the agents using it — what was resolving cleanly, what wasn't, what they thought should change. The fixes came from the field, not a desk review alone.</li>
+<li><strong>Mapped customer intent to outcome paths.</strong> For each case type, laid out the realistic set of customer intents and the correct end-to-end resolution for each — not just the happy path.</li>
+<li><strong>Specified the logic, not the code.</strong> My contribution was the conditional scenarios — step by step, as precisely as possible — for someone else to implement, so intent was preserved through the handoff.</li>
+<li><strong>Got ahead of edge cases before they happened.</strong> Rather than waiting for a scenario to fail and patching it, I tried to anticipate the full set of branch scenarios up front, including unlikely ones, so a gap was closed before a customer ever hit it. I credit this proactive mapping, more than any single fix, for the size of the jump.</li>
+<li><strong>Built in checkpoints.</strong> Each branch had a validation point the tool checked before finalizing a recommendation, so an unmatched case would get flagged rather than silently mis-routed.</li>
+<li><strong>Iterated against real outcomes.</strong> Reviewed where recommendations still missed, traced it to the ambiguous or missing branch, tightened it.</li>
+</ol>
+
+<h2>Why this worked</h2>
+<p>The core insight: an AI system is only as reliable as the decision logic behind it. Prompting or model quality wasn't the bottleneck — the SOP was. Most of the gain came from removing ambiguity a human reader would resolve unconsciously but a rules-driven system could not.</p>
+
+<h2>Result</h2>
+<table><tr><th>Metric</th><th>Before</th><th>After</th><th>Timeframe</th></tr>
+<tr><td>SOP-driven resolution accuracy</td><td>~44%</td><td>~55%</td><td>~2 months</td></tr>
+<tr><td>Overall AI impact (combined metric)</td><td>~30%</td><td>~34%</td><td>~2 months</td></tr>
+</table>
+<p>Both figures were confirmed through the company's own internal performance review, not self-reported.</p>
+
+<h2>What I'd apply elsewhere</h2>
+<p>Any AI workflow underperforming because of vague upstream rules — not the model — benefits from the same treatment: map real-world intents first, convert guidance into explicit conditional logic, add validation checkpoints, and iterate against actual misses rather than guessing at improvements.</p>
+</div></body></html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Time Determination Process Redesign — Riza Jean Tumbaga</title>
+<style>
+:root{--ink:#142433;--steel:#3E5C76;--amber:#E8A33D;--paper:#F5F6F4;--dim:#E8EBE8;--line:#D7DBD6;--text:#243138;--soft:#5B6B76;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--paper);color:var(--text);font-family:Georgia,serif;line-height:1.65;}
+.wrap{max-width:720px;margin:0 auto;padding:50px 24px 80px;}
+a.back{color:var(--steel);text-decoration:none;font-family:system-ui,sans-serif;font-size:0.92rem;}
+h1{margin:22px 0 6px;font-size:2rem;}
+.meta{color:var(--soft);font-family:system-ui,sans-serif;font-size:0.92rem;margin-bottom:30px;}
+h2{margin:34px 0 10px;font-size:1.3rem;color:var(--steel);}
+p{margin-bottom:14px;}
+.note{background:var(--dim);border-left:3px solid var(--amber);padding:14px 18px;font-family:system-ui,sans-serif;font-size:0.9rem;color:var(--soft);margin-bottom:24px;}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:0.95rem;}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;}
+th{background:var(--dim);}
+ul{margin:0 0 14px 22px;}
+li{margin-bottom:8px;}
+</style></head><body><div class="wrap">
+<a class="back" href="index.html">← Back to portfolio</a>
+<h1>Vessel Documentation Process Redesign (Free Time Determination)</h1>
+<p class="meta">Role: Process Expert · Tools: Excel/VBA, internal terminal & documentation systems · Result: ~6 hrs → ~2 hrs daily; 8–9 tools → 3 per vessel</p>
+<div class="note">System names and internal tool details are generalized to protect employer confidentiality. The workflow structure and results are real.</div>
+
+<h2>The problem</h2>
+<p>A daily documentation process had to be completed for every vessel handled — typically 4 to 6 a day, sometimes more. Each vessel took roughly an hour or longer depending on how many bills of lading were loaded against it, for a total daily processing time of around six hours. The slowest part wasn't the decision-making — it was the navigation: each vessel required opening and cross-referencing 8 to 9 different tools and source systems, one at a time.</p>
+
+<h2>What I built</h2>
+<p>Instead of opening each source system per vessel, I consolidated the data those systems held into a single master file, updated on a schedule, and built a macro that pulled from that master rather than re-querying each source live.</p>
+<p><strong>Before:</strong> vessel arrives → open Tool 1 → open Tool 2 → … → open Tool 8/9 → cross-reference manually → determine free time → document result → repeat per vessel, ~1 hour+ each.</p>
+<p><strong>After:</strong> vessel arrives → macro pulls the relevant data from the consolidated master → remaining manual step is verifying against the one or two systems that need a live check → document result. Down to roughly 20–30 minutes per vessel.</p>
+
+<h2>Design decisions worth calling out</h2>
+<ul>
+<li><strong>Consolidate before you automate.</strong> The biggest win wasn't the macro logic — it was recognizing that most of the 8–9 tool lookups were repeated queries against data that didn't change vessel-to-vessel within the same day, and could be centralized once instead of re-fetched every time.</li>
+<li><strong>Keep the genuinely live step live.</strong> One tool in the original workflow reflects real-time terminal status, so it stays a manual check — automating a stale copy of it would make results less reliable, not more.</li>
+<li><strong>Design for the busy day, not the average day.</strong> With volume ranging from 4 to 6+ vessels, the goal was a workflow that held up on the high-volume days, since that's when manual process breaks down fastest.</li>
+</ul>
+
+<h2>Result</h2>
+<table><tr><th></th><th>Before</th><th>After</th></tr>
+<tr><td>Daily processing time (4–6 vessels)</td><td>~6 hours</td><td>~2 hours</td></tr>
+<tr><td>Per-vessel time</td><td>~1 hour+</td><td>~20–30 minutes</td></tr>
+<tr><td>Tools touched per vessel</td><td>8–9</td><td>3</td></tr>
+</table>
+
+<h2>What I'd apply elsewhere</h2>
+<p>When a process is slow because of lookup overhead rather than decision complexity, the fix is usually consolidation, not more automation logic. Find what's being re-fetched unnecessarily before automating the decision itself.</p>
+</div></body></html>

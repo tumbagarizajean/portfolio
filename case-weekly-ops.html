@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Ops Report Automation — Riza Jean Tumbaga</title>
+<style>
+:root{--ink:#142433;--steel:#3E5C76;--amber:#E8A33D;--paper:#F5F6F4;--dim:#E8EBE8;--line:#D7DBD6;--text:#243138;--soft:#5B6B76;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--paper);color:var(--text);font-family:Georgia,serif;line-height:1.65;}
+.wrap{max-width:720px;margin:0 auto;padding:50px 24px 80px;}
+a.back{color:var(--steel);text-decoration:none;font-family:system-ui,sans-serif;font-size:0.92rem;}
+h1{margin:22px 0 6px;font-size:2rem;}
+.meta{color:var(--soft);font-family:system-ui,sans-serif;font-size:0.92rem;margin-bottom:30px;}
+h2{margin:34px 0 10px;font-size:1.3rem;color:var(--steel);}
+p{margin-bottom:14px;}
+.note{background:var(--dim);border-left:3px solid var(--amber);padding:14px 18px;font-family:system-ui,sans-serif;font-size:0.9rem;color:var(--soft);margin-bottom:24px;}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:0.95rem;}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;}
+th{background:var(--dim);}
+ul,ol{margin:0 0 14px 22px;}
+li{margin-bottom:8px;}
+code{background:var(--dim);padding:1px 5px;border-radius:3px;font-size:0.9em;}
+</style></head><body><div class="wrap">
+<a class="back" href="index.html">← Back to portfolio</a>
+<h1>Weekly Operations Report — Excel/VBA Automation</h1>
+<p class="meta">Role: Reporting & Automation Lead · Tools: Excel, VBA, Outlook · Result: 1–2 hrs → ~15 min per cycle</p>
+<div class="note">Demo runs on fabricated data with invented company names and regions. It reproduces the method of an automation from a previous role, not that employer's data or systems.</div>
+
+<h2>The problem</h2>
+<p>A recurring task report had to be produced every Monday for two regions. The manual routine: download a raw export, filter and paste each region's slice into its own file, hand-build summary tables (top task types, top accounts, overdue counts), then retype the headline numbers into an email. It took an hour or two, and it was easy for a number in the email to drift from the number in the attachment.</p>
+
+<h2>What I built</h2>
+<p>A macro-enabled workbook that validates the raw export, splits it by region, builds the summaries, and generates the email body — down to about 15 minutes end to end.</p>
+<p><strong>Pipeline:</strong> raw export → header validation → split by region → build summaries (top task types, top accounts, headline stats) → auto-split into a separate file per region → generate email body</p>
+
+<h2>Design decisions worth calling out</h2>
+<ul>
+<li><strong>Validate before processing.</strong> The macro checks every required column exists before touching anything, and names what's missing. A changed export layout was the most common real failure, and a silent wrong answer is worse than a clear stop.</li>
+<li><strong>Find columns by header name, not position.</strong> Hardcoded column letters break the first time someone adds a field. Every lookup resolves the header text at runtime.</li>
+<li><strong>Parameters live on a control sheet, not in the code.</strong> Reporting week, thresholds, and list sizes sit on a separate sheet so a non-technical colleague can adjust them without opening the VBA editor.</li>
+<li><strong>Generate the email from the same numbers as the report.</strong> The old process re-typed figures by hand; this one can't let the email and the attachment disagree.</li>
+<li><strong>Human stays in the loop at the end.</strong> The macro stops at a reviewable draft — distribution is deliberately manual.</li>
+</ul>
+
+<h2>Result</h2>
+<table><tr><th></th><th>Before</th><th>After</th></tr>
+<tr><td>Cycle time</td><td>1–2 hours</td><td>~15 minutes</td></tr>
+<tr><td>Manual steps</td><td>Filter, clean, pivot, calculate, split, email — by hand</td><td>One macro run</td></tr>
+<tr><td>Output</td><td>Single file, hand-split by country</td><td>Auto-generated file per country</td></tr>
+</table>
+</div></body></html>
