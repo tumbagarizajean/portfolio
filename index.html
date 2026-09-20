@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riza Jean Tumbaga — Process Automation & AI Enablement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#142433; --steel:#3E5C76; --steel-soft:#7C93A3;
+    --amber:#E8A33D; --paper:#F5F6F4; --paper-dim:#E8EBE8;
+    --line:#D7DBD6; --text:#243138; --text-soft:#5B6B76;
+    --card:#FFFFFF;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#EFF3F5; --steel:#9FB4C4; --steel-soft:#6E8494;
+      --amber:#F0B25C; --paper:#12181C; --paper-dim:#1A2126;
+      --line:#2B343A; --text:#DCE3E6; --text-soft:#93A3AB;
+      --card:#182025;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#EFF3F5; --steel:#9FB4C4; --steel-soft:#6E8494;
+    --amber:#F0B25C; --paper:#12181C; --paper-dim:#1A2126;
+    --line:#2B343A; --text:#DCE3E6; --text-soft:#93A3AB;
+    --card:#182025;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper); color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px; line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif; color:var(--ink); font-weight:600;}
+  a{color:inherit;}
+  .wrap{max-width:820px; margin:0 auto; padding:0 24px;}
+
+  header.top{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 24px; border-bottom:1px solid var(--line);
+    position:sticky; top:0; background:var(--paper); z-index:10;
+  }
+  header.top .brand{font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; color:var(--ink);}
+  header.top nav a{
+    margin-left:22px; text-decoration:none; color:var(--text-soft);
+    font-size:0.92rem; font-weight:500;
+  }
+  header.top nav a:hover{color:var(--amber);}
+
+  .hero{padding:76px 0 56px;}
+  .hero .kicker{color:var(--steel); font-weight:600; font-size:0.98rem; margin-bottom:14px;}
+  .hero h1{font-size:2.6rem; line-height:1.15; max-width:14ch; margin-bottom:20px;}
+  .hero p.lede{font-size:1.15rem; color:var(--text-soft); max-width:52ch; margin-bottom:30px;}
+  .hero .stats{display:flex; gap:36px; flex-wrap:wrap; margin-bottom:34px;}
+  .hero .stat b{display:block; font-family:'Fraunces',serif; font-size:1.7rem; color:var(--ink);}
+  .hero .stat span{font-size:0.85rem; color:var(--text-soft);}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:13px 24px; border-radius:3px;
+    font-weight:600; font-size:0.95rem; text-decoration:none;
+    border:1px solid var(--ink);
+  }
+  .btn.primary{background:var(--ink); color:var(--paper);}
+  .btn.ghost{background:transparent; color:var(--ink);}
+
+  section{padding:56px 0; border-top:1px solid var(--line);}
+  section .eyebrow{color:var(--steel); font-weight:600; font-size:0.9rem; margin-bottom:8px;}
+  section h2{font-size:1.7rem; margin-bottom:18px;}
+  section > .wrap > p{color:var(--text-soft); max-width:60ch; margin-bottom:8px;}
+
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:6px;
+    padding:26px; margin-top:20px;
+  }
+  .card h3{font-size:1.2rem; margin-bottom:8px;}
+  .card p{color:var(--text-soft); margin-bottom:14px; max-width:64ch;}
+  .card .metric{
+    display:inline-block; background:var(--paper-dim); color:var(--ink);
+    font-weight:600; font-size:0.88rem; padding:6px 12px; border-radius:3px;
+    margin-right:8px; margin-bottom:4px;
+  }
+  .card .tools{color:var(--steel-soft); font-size:0.85rem; margin-top:10px;}
+
+  .demo-box{
+    background:var(--paper-dim); border:1px solid var(--line); border-radius:6px;
+    padding:28px; display:flex; flex-direction:column; gap:16px; margin-top:20px;
+  }
+  .demo-box .flow{display:flex; gap:8px; flex-wrap:wrap; align-items:center; font-size:0.92rem; color:var(--text-soft);}
+  .demo-box .flow span.node{
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:6px 14px; color:var(--text);
+  }
+
+  .skills-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px; margin-top:22px;}
+  .skills-grid h4{font-size:0.92rem; color:var(--steel); margin-bottom:8px; font-weight:600;}
+  .skills-grid p{color:var(--text-soft); font-size:0.92rem; margin:0;}
+  @media (max-width:600px){.skills-grid{grid-template-columns:1fr;}}
+
+  footer{padding:44px 0 60px; text-align:center;}
+  footer p{color:var(--text-soft); font-size:0.9rem;}
+  footer a{color:var(--steel); text-decoration:underline;}
+
+  @media (max-width:600px){
+    .hero h1{font-size:2rem;}
+    header.top nav a{margin-left:14px; font-size:0.85rem;}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">Riza Jean Tumbaga</div>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#demo">Live Demo</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">Process Automation & AI Enablement — Open to Remote Work</p>
+    <h1>I turn manual reporting into systems that run themselves.</h1>
+    <p class="lede">10+ years in logistics operations and customer service, the last two spent building AI-enabled workflows, Excel/VBA automation, and Salesforce process design. Based in Batangas, Philippines — working remote.</p>
+    <div class="stats">
+      <div class="stat"><b>85%+</b><span>faster weekly reporting cycle</span></div>
+      <div class="stat"><b>18→55%</b><span>AI workflow adoption, 2 months</span></div>
+      <div class="stat"><b>9→3</b><span>tools needed per vessel processed</span></div>
+    </div>
+    <div class="cta-row">
+      <a class="btn primary" href="#work">See the work</a>
+      <a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <p class="eyebrow">Selected work</p>
+    <h2>Three problems, three systems</h2>
+    <p>Every example below is rebuilt on fabricated data to protect employer confidentiality — the method and results are real, the data isn't.</p>
+
+    <div class="card">
+      <h3>Weekly Operations Report — Excel/VBA Automation</h3>
+      <p>A recurring two-region task report meant an hour or two of manual filtering, cleaning, pivoting, and calculating every Monday, then hand-splitting the result into separate country files. I built a macro that does all of it in one run and outputs the finished per-country files directly.</p>
+      <span class="metric">1–2 hrs → ~15 min per cycle</span>
+      <span class="metric">Auto-split by country</span>
+      <div class="tools">Excel · VBA · Outlook</div>
+    </div>
+
+    <div class="card">
+      <h3>Free Time Determination — Process Redesign</h3>
+      <p>Processing 4–6 vessels a day meant repeating an 8–9 tool lookup sequence per vessel, for roughly six hours total. I consolidated the source data into one master file that a macro pulls from, cutting per-vessel processing while keeping the one genuinely real-time check manual.</p>
+      <span class="metric">6 hrs → ~2 hrs per day</span>
+      <span class="metric">9 tools → 3 per vessel</span>
+      <div class="tools">Excel · VBA · process consolidation</div>
+    </div>
+
+    <div class="card">
+      <h3>AI Case-Resolution Accuracy — SOP Redesign</h3>
+      <p>A generative AI tool was recommending case resolutions off an SOP written for human judgment, not machine logic. I worked directly with the agents using it to find what wasn't resolving cleanly, then mapped every branch scenario I could anticipate — not just the ones that had already gone wrong — into explicit step-by-step conditional logic for the tool to follow.</p>
+      <span class="metric">44% → 55% resolution accuracy</span>
+      <span class="metric">30% → 34% overall AI impact</span>
+      <div class="tools">Generative AI · Salesforce Case Management · SOP design</div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <p class="eyebrow">Live demo</p>
+    <h2>An automation you can actually try</h2>
+    <p>Submit the form below and watch the pipeline run: your response is logged, routed by what you asked for, and answered automatically — no manual step in between.</p>
+    <div class="demo-box">
+      <div class="flow">
+        <span class="node">Form submitted</span>→
+        <span class="node">Logged to Sheets</span>→
+        <span class="node">Routed by request type</span>→
+        <span class="node">Auto-reply sent</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn primary" href="https://forms.gle/JKqRX3P4bFbufLJAA" target="_blank" rel="noopener">Try the automation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <p class="eyebrow">Toolkit</p>
+    <h2>What I build with</h2>
+    <div class="skills-grid">
+      <div>
+        <h4>AI & Automation</h4>
+        <p>Generative AI workflow design · Prompt engineering · Make.com · Power Automate · AI adoption & governance</p>
+      </div>
+      <div>
+        <h4>Salesforce & CX</h4>
+        <p>Salesforce CRM · Marketing Cloud · Generative AI case integration · SOP-to-intent mapping</p>
+      </div>
+      <div>
+        <h4>Data & Reporting</h4>
+        <p>Excel Macros & VBA · SAP BusinessObjects · Power BI · Reporting automation</p>
+      </div>
+      <div>
+        <h4>Process & Ops</h4>
+        <p>Process redesign · Lean & Six Sigma foundations · Training & onboarding · Stakeholder management</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2 style="margin-bottom:10px;">Let's talk about your workflow.</h2>
+    <p style="margin-bottom:18px;">Open to remote full-time roles, contract automation projects, and freelance builds.</p>
+    <div class="cta-row" style="justify-content:center;">
+      <a class="btn primary" href="mailto:tumbagarizajean@gmail.com">tumbagarizajean@gmail.com</a>
+      <a class="btn ghost" href="https://linkedin.com/in/tumbagarizajean/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
